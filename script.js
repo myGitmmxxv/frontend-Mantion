@@ -45,11 +45,6 @@ async function fetchRoomsData() {
     }
 }
 
-// 4. ฟังก์ชันจัดการการจอง
-function goToBooking(roomId) {
-    window.location.href = '#booking-section';
-}
-
 // 5. การจัดการฟอร์ม (Submit)
 const bookingForm = document.getElementById('booking-form');
 if (bookingForm) {
@@ -86,3 +81,11 @@ window.onload = () => {
     fetchLandingData();
     fetchRoomsData();
 };
+
+// ตรวจสอบว่าใน script.js มีฟังก์ชันนี้อยู่ด้านล่างๆ
+function goToBooking(roomId) {
+    const bookingSection = document.getElementById('booking-section');
+    if (bookingSection) {
+        bookingSection.scrollIntoView({ behavior: 'smooth' });
+    }
+}
