@@ -14,6 +14,33 @@
         <a href="#rooms" class="btn-primary">ดูห้องพักทั้งหมด</a>
     </div>
 </section>
+
+<!-- แผนผังอาคาร (Building Map Section) -->
+<section id="building-view" class="building-section">
+    <div class="container">
+        <h2 class="section-title">สำรวจชั้นพักอาศัย (Interactive View)</h2>
+        <p class="section-subtitle">เลือกชั้นที่ต้องการเพื่อดูสถานะห้องพักแบบ Real-time</p>
+        
+        <div class="building-wrapper">
+            <!-- ตึกจำลอง -->
+            <div id="building-container" class="building-model">
+                <!-- ชั้นจะถูกเรนเดอร์ด้วย JS -->
+            </div>
+            
+            <!-- รายละเอียดเมื่อเลือกชั้น -->
+            <div id="floor-detail" class="floor-detail-panel">
+                <div class="detail-header">
+                    <h3 id="current-floor-name">กรุณาเลือกชั้นเพื่อดูข้อมูล</h3>
+                    <p id="current-floor-desc"></p>
+                </div>
+                <div id="floor-plan" class="floor-plan-view">
+                    <!-- ผังห้องแรเงาจะแสดงตรงนี้ -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <div id="rooms" class="room-grid-container">
     </div>
 
@@ -55,6 +82,11 @@
         <p>กรอกข้อมูลสั้นๆ เพื่อให้เจ้าหน้าที่ติดต่อกลับ</p>
         
         <form id="booking-form">
+            <div id="selected-room-display" style="background: #2a2a2a; padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: left; display: none; border-left: 4px solid #4CAF50;">
+                <span style="color: #bbb; font-size: 0.85rem;">ห้องที่เลือก:</span><br>
+                <strong id="selected-room-name" style="font-size: 1.1rem; color: #fff;">-</strong>
+            </div>
+            
             <div class="form-group">
                 <label for="name">ชื่อ-นามสกุล</label>
                 <input type="text" id="name" placeholder="ภาษาไทย หรือ ภาษาอังกฤษ" required>

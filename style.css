@@ -155,6 +155,196 @@ body {
     .hero-content p { font-size: 1rem; }
 }
 
+/* Building Map Section */
+.building-section {
+    padding: 100px 20px;
+    background-color: #121212;
+    text-align: center;
+}
+
+.building-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 60px;
+    margin-top: 50px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Building Model Styles - ปรับให้เป็นตึกกระจกที่ดูแพงขึ้น */
+.building-model {
+    display: flex;
+    flex-direction: column; /* เรียงจากบนลงล่าง */
+    gap: 2px;
+    perspective: 2000px;
+    padding: 60px 40px;
+    background: rgba(255, 255, 255, 0.02);
+    border-left: 10px solid #222;
+    border-right: 10px solid #222;
+    position: relative;
+    box-shadow: 0 0 50px rgba(0,0,0,0.5);
+}
+
+/* หลังคาตึก (Roof) */
+.building-model::before {
+    content: "MANTION LUXURY RESORT";
+    position: absolute;
+    top: -40px;
+    left: -10px;
+    right: -10px;
+    height: 40px;
+    background: #111;
+    border-top: 3px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    letter-spacing: 4px;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* ฐานตึก (Base/Ground) */
+.building-model::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: -30px;
+    right: -30px;
+    height: 20px;
+    background: #000;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+
+.floor-layer {
+    width: 320px;
+    height: 75px;
+    background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+    border: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+}
+
+/* เอฟเฟกต์กระจกสะท้อนและการยื่นออกมาเมื่อ Hover */
+.floor-layer:hover {
+    transform: translateZ(100px) translateX(30px);
+    background: #ffffff; /* เปลี่ยนเป็นสีขาวทันทีเมื่อชี้ */
+    color: #121212;      /* ตัวหนังสือเป็นสีดำ */
+    border-color: #fff;
+    z-index: 100;
+    box-shadow: -20px 20px 40px rgba(0,0,0,0.6);
+}
+
+/* ลบสไตล์ active เดิมออก เพราะเราจะใช้ hover แทน */
+.floor-layer.active {
+    background: #ffffff;
+    color: #121212;
+    transform: translateZ(120px) translateX(40px);
+    z-index: 101;
+}
+
+/* Floor Detail Panel - ดีไซน์พรีเมี่ยม Royal Glass */
+.floor-detail-panel {
+    flex: 1;
+    min-width: 450px;
+    min-height: 520px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    padding: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 50px 100px rgba(0,0,0,0.4);
+    transition: all 0.5s ease;
+}
+
+/* เอฟเฟกต์การเปลี่ยนผ่านแบบนุ่มนวล (Royal Transition) */
+.detail-header, .floor-plan-view {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* เมื่อข้อมูลถูกโหลดเข้ามา */
+.floor-detail-panel.active-view .detail-header,
+.floor-detail-panel.active-view .floor-plan-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.detail-header h3 {
+    font-size: 2.2rem;
+    font-weight: 200;
+    letter-spacing: 3px;
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+.floor-plan-view {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.room-block {
+    height: 120px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.room-block:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05) translateY(-5px);
+}
+
+/* ลบสไตล์แรเงาเดิมออก */
+.room-block.occupied, .room-block.maintenance {
+    background: #1e1e1e;
+    opacity: 1;
+}
+
+.room-block .room-id {
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.room-block .room-status {
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+/* เอาวันเช็คเอ้าท์ออก */
+.checkout-info {
+    display: none;
+}
+
+.room-block:not(.occupied):not(.maintenance):hover {
+    border-color: #FFFFFF;
+    background: #2D2D2D;
+    cursor: pointer;
+}
+
+@media (max-width: 968px) {
+    .building-wrapper { flex-direction: column; align-items: center; }
+}
+
 .booking-section {
     padding: 80px 20px;
     background-color: #121212;
