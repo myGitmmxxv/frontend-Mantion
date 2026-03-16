@@ -234,3 +234,25 @@ body {
 html {
     scroll-behavior: smooth;
 }
+
+.form-message {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 500;
+    min-height: 20px;
+}
+
+/* เพิ่มให้ input ที่เป็น readonly ดูแตกต่าง */
+input:read-only {
+    background-color: #1a1a1a !important;
+    border-color: #555 !important;
+    color: #888 !important;
+}
+
+.stat-card {
+    background: #252525;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #444;
+}

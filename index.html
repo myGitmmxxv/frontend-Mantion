@@ -7,76 +7,57 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <section class="hero-section">
-    <div class="hero-content">
-        <h1 id="hero-title">ค้นพบที่พักที่ตอบโจทย์ไลฟ์สไตล์คุณ</h1>
-        <p id="hero-desc">สัมผัสประสบการณ์การพักผ่อนที่เหนือระดับ ด้วยห้องพักดีไซน์ Minimalist ในราคาที่คุณเอื้อมถึง</p>
-        <a href="#rooms" class="btn-primary">ดูห้องพักทั้งหมด</a>
-    </div>
-</section>
-<div id="rooms" class="room-grid-container">
-    </div>
-
-    <div class="room-grid-container">
-        <div class="room-card">
-            <div class="image-container">
-                <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=800&q=80" alt="Deluxe Room">
-                <span class="price-tag">฿2,500 / คืน</span>
-            </div>
-            <div class="content">
-                <h3>Deluxe Ocean View</h3>
-                <div class="amenities">
-                    <span>Free Wi-Fi</span>
-                    <span>Air Conditioning</span>
-                </div>
-                <button class="btn-select" onclick="goToBooking('room-1')">เลือกห้องนี้</button>
-            </div>
+        <div class="hero-content">
+            <h1 id="hero-title">ค้นพบที่พักที่ตอบโจทย์ไลฟ์สไตล์คุณ</h1>
+            <p id="hero-desc">สัมผัสประสบการณ์การพักผ่อนที่เหนือระดับ ด้วยห้องพักดีไซน์ Minimalist</p>
+            <a href="#dashboard" class="btn-primary">ดูห้องพักทั้งหมด</a>
         </div>
+    </section>
 
-        <div class="room-card">
-            <div class="image-container">
-                <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80" alt="Standard Room">
-                <span class="price-tag">฿1,200 / คืน</span>
+    <section id="dashboard" class="dashboard">
+        <h2>สรุปสถานะห้องว่าง</h2>
+        <div id="stats-container" class="stats-grid">
             </div>
-            <div class="content">
-                <h3>Standard Cozy Room</h3>
-                <div class="amenities">
-                    <span>Free Wi-Fi</span>
-                    <span>TV</span>
-                </div>
-                <button class="btn-select" onclick="goToBooking('room-1')">เลือกห้องนี้</button>
-            </div>
+    </section>
+
+    <div id="rooms" class="room-grid-container">
         </div>
-    </div>
 
     <section id="booking-section" class="booking-section">
-    <div class="booking-container">
-        <h2>จองห้องพักของคุณ</h2>
-        <p>กรอกข้อมูลสั้นๆ เพื่อให้เจ้าหน้าที่ติดต่อกลับ</p>
-        
-        <form id="booking-form">
-            <div class="form-group">
-                <label for="name">ชื่อ-นามสกุล</label>
-                <input type="text" id="name" placeholder="ภาษาไทย หรือ ภาษาอังกฤษ" required>
-            </div>
+        <div class="booking-container">
+            <h2>จองห้องพักของคุณ</h2>
+            <p>กรอกข้อมูลสั้นๆ เพื่อให้เจ้าหน้าที่ติดต่อกลับ</p>
             
-            <div class="form-group">
-                <label for="email">อีเมล</label>
-                <input type="email" id="email" placeholder="example@email.com" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="date">วันที่ต้องการเข้าพัก</label>
-                <input type="date" id="date" required>
-            </div>
-            
-            <button type="submit" class="btn-submit">ยืนยันการจอง</button>
-        </form>
-        <div id="form-message" class="form-message"></div>
-    </div>
-</section>
+            <form id="booking-form">
+                <div class="form-group">
+                    <label for="selected-room-name">ห้องที่เลือก</label>
+                    <input type="text" id="selected-room-name" readonly placeholder="โปรดเลือกห้องพักจากรายการด้านบน" style="background-color: #333; color: #fff; cursor: not-allowed;">
+                    <input type="hidden" id="selected-room-id">
+                </div>
+
+                <div class="form-group">
+                    <label for="name">ชื่อ-นามสกุล</label>
+                    <input type="text" id="name" placeholder="ภาษาไทย หรือ ภาษาอังกฤษ" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">อีเมล</label>
+                    <input type="email" id="email" placeholder="example@email.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="date">วันที่ต้องการเข้าพัก</label>
+                    <input type="date" id="date" required>
+                </div>
+                
+                <button type="submit" class="btn-submit">ยืนยันการจอง</button>
+            </form>
+            <div id="form-message" class="form-message"></div>
+        </div>
+    </section>
 
     <script src="script.js"></script>
-
 </body>
 </html>
