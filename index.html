@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Room Rental - Room Grid</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,8 +20,14 @@
     </section>
 
     <section id="dashboard" class="dashboard">
-        <h2>สรุปสถานะห้องว่าง</h2>
+        <h2 style="font-family: var(--font-heading); margin-bottom: 30px; text-align: center;">เลือกชั้นที่ต้องการเข้าพัก</h2>
         <div id="stats-container" class="stats-grid">
+            </div>
+    </section>
+
+    <section id="rooms-section" style="display: none; margin-top: 40px;">
+        <h2 id="selected-floor-title" style="text-align: center; font-family: var(--font-heading); color: var(--accent-color);"></h2>
+        <div id="rooms" class="room-grid-container">
             </div>
     </section>
 
@@ -27,13 +36,13 @@
 
     <section id="booking-section" class="booking-section">
         <div class="booking-container">
-            <h2>จองห้องพักของคุณ</h2>
+               <h2>จองห้องพักของคุณ</h2>
             <p>กรอกข้อมูลสั้นๆ เพื่อให้เจ้าหน้าที่ติดต่อกลับ</p>
             
             <form id="booking-form">
                 <div class="form-group">
                     <label for="selected-room-name">ห้องที่เลือก</label>
-                    <input type="text" id="selected-room-name" readonly placeholder="โปรดเลือกห้องพักจากรายการด้านบน" style="background-color: #333; color: #fff; cursor: not-allowed;">
+                    <input type="text" id="selected-room-name" readonly placeholder="โปรดเลือกห้องพักจากรายการด้านบน">
                     <input type="hidden" id="selected-room-id">
                 </div>
 
@@ -41,22 +50,45 @@
                     <label for="name">ชื่อ-นามสกุล</label>
                     <input type="text" id="name" placeholder="ภาษาไทย หรือ ภาษาอังกฤษ" required>
                 </div>
-                
+    
                 <div class="form-group">
                     <label for="email">อีเมล</label>
                     <input type="email" id="email" placeholder="example@email.com" required>
                 </div>
-                
+
+                <div class="form-group">
+                    <label for="phone">เบอร์โทรศัพท์</label>
+                    <input type="tel" id="phone" placeholder="08X-XXX-XXXX" pattern="[0-9]{9,10}" required>
+                </div>
+    
                 <div class="form-group">
                     <label for="date">วันที่ต้องการเข้าพัก</label>
                     <input type="date" id="date" required>
                 </div>
-                
-                <button type="submit" class="btn-submit">ยืนยันการจอง</button>
-            </form>
+
+                <div class="form-group">
+                    <label for="password">รหัสผ่านสำหรับเข้าดูสถานะการจอง</label>
+            <input type="password" id="password" placeholder="กำหนดรหัสผ่านของคุณ" required>
+            <small style="color: var(--text-secondary); font-size: 0.75rem; display: block; margin-top: 5px;">*ใช้สำหรับเข้าสู่ระบบตรวจสอบสถานะในภายหลัง</small>
+        </div>
+    
+        <button type="submit" class="btn-submit">ยืนยันการจอง</button>
+    </form>
             <div id="form-message" class="form-message"></div>
         </div>
     </section>
+
+    <footer style="padding: 60px 20px; border-top: 1px solid var(--glass-border); text-align: center; margin-top: 80px;">
+        <h2 style="font-family: var(--font-heading); color: var(--accent-color); margin-bottom: 20px;">P&W Mansion Project</h2>
+        <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 30px;">
+            ยกระดับการอยู่อาศัยด้วยดีไซน์ที่ทันสมัยและระบบจัดการที่อัจฉริยะ ตอบโจทย์ทุกการใช้ชีวิตในเมือง
+        </p>
+        <div style="display: flex; justify-content: center; gap: 20px; font-size: 0.9rem; color: var(--text-secondary);">
+            <span>© 2026 By P & BRO</span>
+            <span>•</span>
+            <a href="#" style="color: inherit; text-decoration: none;">Privacy Policy</a>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
